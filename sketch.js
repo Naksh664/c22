@@ -18,8 +18,9 @@ function setup() {
 
   console.log(ground);
   console.log(ground.position.x);
-  var ball_options ={
-   restitution: 1
+  var  ball_options ={
+   restitution: 1,
+   isStatic :true // this line was missing
   }
   
   ball=Bodies.circle(200,100,50,ball_options)
@@ -36,8 +37,12 @@ function draw() {
   ellipseMode(CENTER);
   ellipse(ball.position.x,ball.position.y,50);
   if(keyDown ("down")){
-    var ball_options = {
-    isStatic: false
-  }
+    // ball_options = {
+    //isStatic: false
+ // }
+ Matter.Body.setStatic(ball, false); // and use this setStatic function in Body module,
+ // to set the isStatic property of any body to false
 }
+
 }
+
